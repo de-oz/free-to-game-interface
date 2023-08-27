@@ -1,8 +1,12 @@
+import { Outlet } from 'react-router-dom';
+
 function App() {
   return (
     <>
       <header>Header</header>
-      <main>Main</main>
+      <main>
+        <Outlet />
+      </main>
       <footer>Footer</footer>
     </>
   );
