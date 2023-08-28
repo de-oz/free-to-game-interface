@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useGame } from '../hooks/useGame';
 import { useParams } from 'react-router-dom';
 
@@ -19,6 +20,8 @@ const GamePage = () => {
 
   return (
     <>
+      <Link to="/">Back to Main</Link>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
