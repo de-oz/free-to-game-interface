@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useGameList } from '../hooks/useGameList';
 
 const MainPage = () => {
@@ -10,7 +11,9 @@ const MainPage = () => {
       ) : (
         games.map(({ id, title, release_date, publisher, genre, thumbnail }) => (
           <li key={id}>
-            {title} - {genre} - {release_date}
+            <Link to={`${id}`}>{title}</Link>
+            <p>Publisher: {publisher} | Genre: {genre} | Release date: {release_date}</p>
+            <img src={thumbnail} alt={`${title}'s cover`} />
           </li>
         ))
       )}
