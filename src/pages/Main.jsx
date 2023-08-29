@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGameList } from '../hooks/useGameList';
 import SelectSortBy from '../components/SelectSortBy';
@@ -6,7 +7,10 @@ import TagFilter from '../components/TagFilter';
 import Box from '@mui/material/Box';
 
 const Main = () => {
-  const { games, loading } = useGameList();
+  const [platform, setPlatform] = useState('all');
+  const [tag, setTag] = useState('all');
+  const [sortBy, setSortBy] = useState('relevance');
+  const { games, loading, error } = useGameList(platform, tag, sortBy);
 
   return (
     <>
@@ -17,9 +21,18 @@ const Main = () => {
         justifyContent="center"
         textAlign="center"
         mx="auto">
-        <PlatformFilter />
-        <TagFilter />
-        <SelectSortBy />
+        <PlatformFilter
+          platform={platform}
+          setPlatform={setPlatform}
+        />
+        <TagFilter
+          tag={tag}
+          setTag={setTag}
+        />
+        <SelectSortBy
+          sortBy={sortBy}
+          setSortBy={setSortBy}
+        />
       </Box>
 
       <ul>
