@@ -38,7 +38,9 @@ const Main = () => {
       <ul>
         {loading ? (
           <p>Loading...</p>
-        ) : (
+        ) : error ? (
+          <p>Failed to receive data.</p>
+        ) : games.length ? (
           games.map(({ id, title, release_date, publisher, genre, thumbnail }) => (
             <li key={id}>
               <Link to={`${id}`}>{title}</Link>
@@ -51,6 +53,8 @@ const Main = () => {
               />
             </li>
           ))
+        ) : (
+          <p>No matching games found.</p>
         )}
       </ul>
     </>
