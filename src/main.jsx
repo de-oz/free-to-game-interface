@@ -3,21 +3,34 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 
-import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
-import MainPage from './routes/MainPage.jsx';
-import GamePage from './routes/GamePage.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Main from './pages/Main.jsx';
+import Game from './pages/Game.jsx';
+import NotFound from './pages/NotFound.jsx';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index element={<MainPage />} />
-      <Route path=":gameId" element={<GamePage />} />
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Main />,
+      },
+      {
+        path: ':gameId',
+        element: <Game />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
