@@ -1,8 +1,9 @@
+import GameError from '../components/GameError';
 import { Link } from 'react-router-dom';
 import { useGame } from '../hooks/useGame';
 import { useParams } from 'react-router-dom';
 
-const GamePage = () => {
+const Game = () => {
   const { gameId } = useParams();
   const {
     game: {
@@ -16,6 +17,7 @@ const GamePage = () => {
       minimum_system_requirements: requirements,
     },
     loading,
+    error,
   } = useGame(gameId);
 
   return (
@@ -24,6 +26,8 @@ const GamePage = () => {
 
       {loading ? (
         <p>Loading...</p>
+      ) : error ? (
+        <GameError error={error} />
       ) : (
         <ul>
           <li>Title: {title}</li>
@@ -57,4 +61,4 @@ const GamePage = () => {
   );
 };
 
-export default GamePage;
+export default Game;

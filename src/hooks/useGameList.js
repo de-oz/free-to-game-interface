@@ -4,6 +4,7 @@ import axios from 'axios';
 export const useGameList = () => {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const options = {
@@ -19,6 +20,7 @@ export const useGameList = () => {
         setGames(games);
       } catch (error) {
         console.error(error.message);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -27,5 +29,5 @@ export const useGameList = () => {
     getGames(options);
   }, []);
 
-  return { games, loading };
+  return { games, loading, error };
 };

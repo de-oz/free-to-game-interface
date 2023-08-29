@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useGameList } from '../hooks/useGameList';
 
-const MainPage = () => {
+const Main = () => {
   const { games, loading } = useGameList();
 
   return (
@@ -26,4 +26,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Main;
