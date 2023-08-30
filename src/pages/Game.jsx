@@ -1,25 +1,10 @@
+import { Link, useParams } from 'react-router-dom';
+import { useGameDetails } from '../hooks/useGameDetails';
 import GameError from '../components/GameError';
-import { Link } from 'react-router-dom';
-import { useGame } from '../hooks/useGame';
-import { useParams } from 'react-router-dom';
 
 const Game = () => {
   const { gameId } = useParams();
-  const {
-    game: {
-      title,
-      platform,
-      release_date,
-      publisher,
-      developer,
-      genre,
-      thumbnail,
-      screenshots,
-      minimum_system_requirements: requirements,
-    },
-    loading,
-    error,
-  } = useGame(gameId);
+  const { game, loading, error } = useGameDetails(gameId);
 
   return (
     <>
@@ -31,49 +16,49 @@ const Game = () => {
         <GameError error={error} />
       ) : (
         <ul>
-          <li>Title: {title}</li>
-          <li>Publisher: {publisher}</li>
-          <li>Developer: {developer}</li>
-          <li>Genre: {genre}</li>
-          <li>Release date: {release_date}</li>
+          <li>Title: {game.title}</li>
+          <li>Publisher: {game.publisher}</li>
+          <li>Developer: {game.developer}</li>
+          <li>Genre: {game.genre}</li>
+          <li>Release date: {game.release_date}</li>
 
-          {Boolean(screenshots.length) && (
+          {Boolean(game.screenshots.length) && (
             <li>
               Screenshots:
               <ul>
-                {screenshots.map((screenshot) => (
+                {game.screenshots.map((screenshot) => (
                   <li key={screenshot.id}>{screenshot.image}</li>
                 ))}
               </ul>
             </li>
           )}
 
-          <li>Thumbnail: {thumbnail}</li>
+          <li>Thumbnail: {game.thumbnail}</li>
 
-          {platform.includes('Windows') && requirements.os && (
+          {game.platform.includes('Windows') && game.minimum_system_requirements.os && (
             <li>
               Minimum System Requirements (Windows)
               <ul>
-                <li>OS: {requirements.os || '?'}</li>
-                <li>Processor: {requirements.processor || '?'}</li>
-                <li>Memory: {requirements.memory || '?'}</li>
-                <li>Graphics: {requirements.graphics || '?'}</li>
-                <li>Storage: {requirements.storage || '?'}</li>
+                <li>OS: {game.minimum_system_requirements.os || '?'}</li>
+                <li>Processor: {game.minimum_system_requirements.processor || '?'}</li>
+                <li>Memory: {game.minimum_system_requirements.memory || '?'}</li>
+                <li>Graphics: {game.minimum_system_requirements.graphics || '?'}</li>
+                <li>Storage: {game.minimum_system_requirements.storage || '?'}</li>
               </ul>
             </li>
           )}
 
-          {platform.includes('Browser') && (
+          {game.platform.includes('Browser') && (
             <li>
               Minimum System Requirements (Browser)
               <p>
-                {title} is a browser based game and should run smoothly on practically any PC with an updated
+                {game.title} is a browser based game and should run smoothly on practically any PC with an updated
                 web-browser.
               </p>
               <p>
-                If you have old hardware or software, you may still be able to play {title}, but your game experience
-                may suffer. For the best gameplay experience, we recommend the latest versions of Firefox, Chrome, or
-                Internet Explorer.
+                If you have old hardware or software, you may still be able to play {game.title}, but your game
+                experience may suffer. For the best gameplay experience, we recommend the latest versions of Firefox,
+                Chrome, or Internet Explorer.
               </p>
             </li>
           )}
