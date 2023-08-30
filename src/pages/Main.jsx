@@ -1,15 +1,13 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useGameList } from '../hooks/useGameList';
+import { useSelector } from 'react-redux';
 import SelectSortBy from '../components/SelectSortBy';
 import PlatformFilter from '../components/PlatformFilter';
 import TagFilter from '../components/TagFilter';
 import Box from '@mui/material/Box';
 
 const Main = () => {
-  const [platform, setPlatform] = useState('all');
-  const [tag, setTag] = useState('all');
-  const [sortBy, setSortBy] = useState('relevance');
+  const { platform, tag, sortBy } = useSelector((state) => state.listOptions);
   const { games, loading, error } = useGameList(platform, tag, sortBy);
 
   return (
@@ -21,18 +19,9 @@ const Main = () => {
         justifyContent="center"
         textAlign="center"
         mx="auto">
-        <PlatformFilter
-          platform={platform}
-          setPlatform={setPlatform}
-        />
-        <TagFilter
-          tag={tag}
-          setTag={setTag}
-        />
-        <SelectSortBy
-          sortBy={sortBy}
-          setSortBy={setSortBy}
-        />
+        <PlatformFilter platform={platform} />
+        <TagFilter tag={tag} />
+        <SelectSortBy sortBy={sortBy} />
       </Box>
 
       <ul>

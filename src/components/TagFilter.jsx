@@ -1,12 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { updateTag } from '../app/listSlice';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function TagFilter({ tag, setTag }) {
-  const handleChange = (event) => {
-    setTag(event.target.value);
-  };
+export default function TagFilter({ tag }) {
+  const dispatch = useDispatch();
 
   const tagMap = {
     all: 'All genres',
@@ -72,7 +72,7 @@ export default function TagFilter({ tag, setTag }) {
           labelId="tag-filter"
           label="Genre/Tag"
           value={tag}
-          onChange={handleChange}>
+          onChange={(e) => dispatch(updateTag(e.target.value))}>
           {Object.entries(tagMap).map(([tag, text]) => (
             <MenuItem
               key={text}

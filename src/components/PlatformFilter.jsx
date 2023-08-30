@@ -1,12 +1,12 @@
+import { useDispatch } from 'react-redux';
+import { updatePlatform } from '../app/listSlice';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function PlatformFilter({ platform, setPlatform }) {
-  const handleChange = (event) => {
-    setPlatform(event.target.value);
-  };
+export default function PlatformFilter({ platform }) {
+  const dispatch = useDispatch();
 
   const platformMap = {
     all: 'All Platforms',
@@ -26,7 +26,7 @@ export default function PlatformFilter({ platform, setPlatform }) {
           labelId="platform-filter"
           label="Platform"
           value={platform}
-          onChange={handleChange}>
+          onChange={(e) => dispatch(updatePlatform(e.target.value))}>
           {Object.entries(platformMap).map(([platform, text]) => (
             <MenuItem
               key={text}

@@ -22,10 +22,10 @@ export const useGameDetails = (gameId) => {
       };
 
       try {
-        const { data: game } = await axios.request(options);
-        setGame(game);
+        const { data: response } = await axios.request(options);
+        setGame(response);
 
-        dispatch(saveGame(game));
+        dispatch(saveGame(response));
         setTimeout(() => {
           dispatch(clearGame(gameId));
         }, 5 * 60 * 1000);

@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 export const useGameList = (platform, tag, sortBy) => {
+  const dispatch = useDispatch();
+
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -21,8 +24,8 @@ export const useGameList = (platform, tag, sortBy) => {
 
     const getGames = async () => {
       try {
-        const { data: games } = await axios.request(options);
-        setGames(games);
+        const { data: response } = await axios.request(options);
+        setGames(response);
       } catch (error) {
         console.error(error.message);
         setError(error);
@@ -32,7 +35,7 @@ export const useGameList = (platform, tag, sortBy) => {
     };
 
     getGames();
-  }, [platform, tag, sortBy]);
+  }, [platform, tag, sortBy, dispatch]);
 
   return { games, loading, error };
 };
