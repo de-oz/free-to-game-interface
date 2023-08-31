@@ -33,17 +33,20 @@ const Game = () => {
         <Container maxWidth="lg">
           <Box
             display="flex"
+            flexDirection={{ xs: 'column', sm: 'row' }}
             justifyContent="space-between"
             alignItems="center"
-            mb={5}>
+            mb={{ xs: 2, sm: 5 }}>
             <Typography
               variant="h4"
+              fontWeight={700}
               component="h1">
               {game.title}
             </Typography>
             <Button
+              sx={{ my: { xs: 2, sm: 0 } }}
               variant="outlined"
-              color="warning"
+              color="info"
               size="large"
               component={Link}
               to="/">
@@ -53,6 +56,7 @@ const Game = () => {
 
           <Box
             display="flex"
+            flexDirection={{ xs: 'column', md: 'row' }}
             justifyContent="space-evenly"
             gap={4}>
             <img
@@ -65,7 +69,7 @@ const Game = () => {
               flexDirection="column">
               <Typography
                 textAlign="center"
-                fontSize="16px"
+                fontSize="18px"
                 mb={1}
                 variant="overline"
                 component="h2">
@@ -73,8 +77,8 @@ const Game = () => {
               </Typography>
               <Grid
                 container
-                justifyContent={'center'}
-                spacing={4}>
+                justifyContent="center"
+                spacing={{ xs: 2, sm: 4 }}>
                 {Object.entries(detailMap).map(([property, text]) => (
                   <Grid
                     item
@@ -83,7 +87,7 @@ const Game = () => {
                     key={property}>
                     <Typography
                       variant="button"
-                      color="error.light">
+                      color="error">
                       {text}
                     </Typography>
                     <Typography>
@@ -112,7 +116,7 @@ const Game = () => {
               <Typography
                 mt={4}
                 textAlign="center"
-                fontSize="16px"
+                fontSize="18px"
                 variant="overline"
                 component="h2">
                 {game.title} Screenshots
@@ -121,10 +125,8 @@ const Game = () => {
               <Divider sx={{ m: '4px 0 16px 0' }} />
 
               <ImageList
-                sx={{ height: 210 }}
-                gap={8}
-                cols={3}
-                rowHeight={200}>
+                sx={{ height: 300 }}
+                gap={8}>
                 {game.screenshots.map((screenshot) => (
                   <ImageListItem key={screenshot.id}>
                     <img
@@ -143,7 +145,7 @@ const Game = () => {
               <Typography
                 mt={4}
                 textAlign="center"
-                fontSize="16px"
+                fontSize="18px"
                 variant="overline"
                 component="h2">
                 Minimum System Requirements (PC)
@@ -154,7 +156,7 @@ const Game = () => {
               <Grid
                 container
                 justifyContent="center"
-                spacing={4}>
+                spacing={{xs: 2, sm: 4}}>
                 {Object.entries(game.minimum_system_requirements).map(([requirement, value]) => (
                   <Grid
                     item
@@ -163,7 +165,7 @@ const Game = () => {
                     key={requirement}>
                     <Typography
                       variant="button"
-                      color="error.light">
+                      color="error">
                       {requirement}
                     </Typography>
                     <Typography>{(value.trim() !== '?' && value) || 'Not specified'}</Typography>
@@ -178,7 +180,7 @@ const Game = () => {
               <Typography
                 mt={4}
                 textAlign="center"
-                fontSize="16px"
+                fontSize="18px"
                 variant="overline"
                 component="h2">
                 Minimum System Requirements (Browser)
