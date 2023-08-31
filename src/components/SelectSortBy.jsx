@@ -18,7 +18,7 @@ export default function SelectSortBy({ sortBy }) {
   return (
     <>
       <FormControl
-        sx={{ width: 200 }}
+        sx={{ width: { xs: 'auto', sm: 250} }}
         size="small"
         margin="normal">
         <InputLabel id="sort-by">Sort By</InputLabel>

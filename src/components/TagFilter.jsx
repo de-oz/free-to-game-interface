@@ -9,7 +9,7 @@ export default function TagFilter({ tag }) {
   const dispatch = useDispatch();
 
   const tagMap = {
-    all: 'All genres',
+    all: 'All Genres',
     mmorpg: 'MMORPG',
     shooter: 'Shooter',
     strategy: 'Strategy',
@@ -51,7 +51,7 @@ export default function TagFilter({ tag }) {
     military: 'Military',
     'martial-arts': 'Martial Arts',
     flight: 'Flight',
-    'low-spec': 'Low-spec',
+    'low-spec': 'Low-Spec',
     'tower-defense': 'Tower Defense',
     horror: 'Horror',
     mmorts: 'MMORTS',
@@ -60,7 +60,7 @@ export default function TagFilter({ tag }) {
   return (
     <>
       <FormControl
-        sx={{ width: 200 }}
+        sx={{ width: { xs: 'auto', sm: 250} }}
         size="small"
         margin="normal">
         <InputLabel id="tag-filter">Genre/Tag</InputLabel>

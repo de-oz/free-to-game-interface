@@ -17,7 +17,7 @@ export default function PlatformFilter({ platform }) {
   return (
     <>
       <FormControl
-        sx={{ width: 200 }}
+        sx={{ width: { xs: 'auto', sm: 250} }}
         size="small"
         margin="normal">
         <InputLabel id="platform-filter">Platform</InputLabel>

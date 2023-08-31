@@ -31,8 +31,8 @@ const Main = () => {
     <Grid
       item
       xs={12}
-      md={6}
-      lg={4}
+      lg={6}
+      xl={4}
       key={game.id}>
       <GameCard {...game} />
     </Grid>
@@ -46,7 +46,7 @@ const Main = () => {
     <>
       <Typography
         variant="button"
-        m="8px 0 48px 0"
+        m={{ xs: '0 0 28px 0', sm: '8px 0 48px 0' }}
         fontWeight={700}
         fontSize={28}
         component="h1"
@@ -55,13 +55,14 @@ const Main = () => {
         Discover the best free-to-play games!
       </Typography>
       <Stack
-        direction="row"
+        direction={{ xs: 'column', sm: 'row' }}
         justifyContent="center"
+        alignItems={{ xs: 'stretch', sm: 'center' }}
         textAlign="center"
         maxWidth="90%"
         mx="auto"
-        spacing={{ xs: 1, sm: 4, md: 10, xl: 20 }}
-        mb={{ xs: 2, sm: 4, md: 6 }}>
+        spacing={{ xs: 3, sm: 4, md: 10, xl: 20 }}
+        mb={{ xs: 3, md: 6 }}>
         <PlatformFilter platform={platform} />
         <TagFilter tag={tag} />
         <SelectSortBy sortBy={sortBy} />
@@ -75,12 +76,12 @@ const Main = () => {
         <>
           <Grid
             container
-            spacing={2}>
+            spacing={{ xs: 1, sm: 1.5, md: 2}}>
             {renderedComponents}
           </Grid>
           {totalPages > 1 && (
             <Pagination
-              sx={{ display: 'flex', justifyContent: 'center', my: 10 }}
+              sx={{ display: 'flex', justifyContent: 'center', my: { xs: 3, sm: 5, md: 10 } }}
               variant="outlined"
               size="large"
               count={totalPages}

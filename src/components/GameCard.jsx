@@ -11,14 +11,19 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 export default function GameCard({ id, title, genre, publisher, release_date, thumbnail }) {
   return (
-    <Card>
+    <Card sx={{ bgcolor: '#18122B' }}>
       <CardActionArea
         component={RouterLink}
         to={`${id}`}
-        sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'stretch' }}>
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'flex-start',
+          alignItems: { xs: 'flex-start', sm: 'stretch' },
+        }}>
         <CardMedia
           component="img"
-          sx={{ width: 200, m: '12px 0 12px 12px', borderRadius: 1 }}
+          sx={{ width: { xs: 1, sm: 0.4}, borderRadius: 1 }}
           image={thumbnail}
           alt={`${title}'s cover`}
         />
@@ -26,17 +31,16 @@ export default function GameCard({ id, title, genre, publisher, release_date, th
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            flexGrow: 1,
           }}>
           <Typography
             component="span"
-            variant="body1">
+            fontSize={{xs: 16, sm: 16, md: 24, lg: 16}}
+            variant="subtitle2">
             {title}
           </Typography>
           <Typography
             variant="caption"
+            fontSize="14px"
             color="text.secondary"
             component="span">
             {publisher}
@@ -44,18 +48,18 @@ export default function GameCard({ id, title, genre, publisher, release_date, th
           <Box
             display="flex"
             gap={1}
-            mt="auto">
+            mt={{ xs: 2, sm: 'auto' }}>
+            <Chip
+              icon={<CalendarMonthIcon />}
+              size="small"
+              sx={{ bgcolor: 'crimson' }}
+              label={new Date(release_date).toLocaleDateString('ru-RU')}
+            />
             <Chip
               icon={<CategoryIcon />}
               size="small"
               color="info"
               label={genre}
-            />
-            <Chip
-              icon={<CalendarMonthIcon />}
-              size="small"
-              color="error"
-              label={new Date(release_date).toLocaleDateString('ru-RU')}
             />
           </Box>
         </CardContent>

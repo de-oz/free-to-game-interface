@@ -19,7 +19,7 @@ function App() {
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Header />
         <Container
-          sx={{ mt: 5, mb: 20 }}
+          sx={{ mt: 5, mb: { xs: 10, sm: 15, md: 20 } }}
           component="main"
           maxWidth="xl">
           <Outlet />
