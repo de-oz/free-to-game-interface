@@ -4,6 +4,7 @@ import { useGameList } from '../hooks/useGameList';
 import SelectSortBy from '../components/SelectSortBy';
 import PlatformFilter from '../components/PlatformFilter';
 import TagFilter from '../components/TagFilter';
+import RequestError from '../components/RequestError';
 import Stack from '@mui/material/Stack';
 import GameCard from '../components/GameCard';
 import Grid from '@mui/material/Grid';
@@ -71,12 +72,15 @@ const Main = () => {
       {loading ? (
         <LoadingSpinner />
       ) : error ? (
-        <p>Failed to receive data.</p>
+        <RequestError
+          error={error}
+          isGamePage={false}
+        />
       ) : games.length ? (
         <>
           <Grid
             container
-            spacing={{ xs: 1, sm: 1.5, md: 2}}>
+            spacing={{ xs: 1, sm: 1.5, md: 2 }}>
             {renderedComponents}
           </Grid>
           {totalPages > 1 && (

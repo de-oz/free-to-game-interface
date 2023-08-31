@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useGameDetails } from '../hooks/useGameDetails';
-import GameError from '../components/GameError';
+import RequestError from '../components/RequestError';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -28,7 +28,7 @@ const Game = () => {
       {loading ? (
         <LoadingSpinner />
       ) : error ? (
-        <GameError error={error} />
+        <RequestError error={error} />
       ) : (
         <Container maxWidth="lg">
           <Box
@@ -156,7 +156,7 @@ const Game = () => {
               <Grid
                 container
                 justifyContent="center"
-                spacing={{xs: 2, sm: 4}}>
+                spacing={{ xs: 2, sm: 4 }}>
                 {Object.entries(game.minimum_system_requirements).map(([requirement, value]) => (
                   <Grid
                     item
