@@ -55,7 +55,7 @@ export default function GameCard({ id, title, genre, publisher, release_date, th
               icon={<CalendarMonthIcon />}
               size="small"
               color="warning"
-              label={release_date}
+              label={(new Date(release_date)).toLocaleDateString('ru-RU')}
             />
           </Box>
         </CardContent>

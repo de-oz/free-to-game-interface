@@ -84,7 +84,7 @@ const Game = () => {
                       color="error.light">
                       {text}
                     </Typography>
-                    <Typography>{game[property]}</Typography>
+                    <Typography>{property === 'release_date' ? (new Date(game[property])).toLocaleDateString('ru-RU') :game[property]}</Typography>
                   </Grid>
                 ))}
               </Grid>
