@@ -34,7 +34,7 @@ export default function GameCard({ id, title, genre, publisher, release_date, th
           }}>
           <Typography
             component="span"
-            fontSize={{xs: 16, sm: 16, md: 24, lg: 16}}
+            fontSize={{xs: 18, sm: 18, md: 24, lg: 18, xl: 15 }}
             variant="subtitle2">
             {title}
           </Typography>

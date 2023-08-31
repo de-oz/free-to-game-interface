@@ -17,7 +17,7 @@ const Main = () => {
   const { games, loading, error } = useGameList(platform, tag, sortBy);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const gamesPerPage = 50;
+  const gamesPerPage = 51;
   const start = (currentPage - 1) * gamesPerPage;
   const end = start + gamesPerPage;
   let currentGames = [];
