@@ -9,6 +9,7 @@ import GameCard from '../components/GameCard';
 import Grid from '@mui/material/Grid';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Pagination from '@mui/material/Pagination';
+import Typography from '@mui/material/Typography';
 
 const Main = () => {
   const { platform, tag, sortBy } = useSelector((state) => state.listOptions);
@@ -43,13 +44,23 @@ const Main = () => {
 
   return (
     <>
+      <Typography
+        variant="button"
+        m="8px 0 48px 0"
+        fontWeight={700}
+        fontSize={28}
+        component="h1"
+        color="error.dark"
+        textAlign="center">
+        Discover the best free-to-play games!
+      </Typography>
       <Stack
         direction="row"
         justifyContent="center"
         textAlign="center"
         maxWidth="90%"
         mx="auto"
-        spacing={{ xs: 1, sm: 4, md: 8, xl: 20 }}
+        spacing={{ xs: 1, sm: 4, md: 10, xl: 20 }}
         mb={{ xs: 2, sm: 4, md: 6 }}>
         <PlatformFilter platform={platform} />
         <TagFilter tag={tag} />

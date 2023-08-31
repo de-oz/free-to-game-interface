@@ -6,7 +6,7 @@ import Avatar from '@mui/material/Avatar';
 export default function Header() {
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar sx={{ mx: 'auto' }}>
         <Avatar
           src="/src/assets/freetogame-logo.png"
           variant="rounded"
