@@ -26,8 +26,6 @@ export const useGameDetails = (gameId) => {
         const { data: response } = await axios.request(options);
         setGame(response);
 
-        console.log(response);
-
         dispatch(saveGame(response));
         setTimeout(() => {
           dispatch(clearGame(gameId));
