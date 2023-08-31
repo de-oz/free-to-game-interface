@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useGameList } from '../hooks/useGameList';
 import SelectSortBy from '../components/SelectSortBy';
 import PlatformFilter from '../components/PlatformFilter';
 import TagFilter from '../components/TagFilter';
 import Stack from '@mui/material/Stack';
+import GameCard from '../components/GameCard';
+import Grid from '@mui/material/Grid';
+import Container from '@mui/material/Container';
 
 const Main = () => {
   const { platform, tag, sortBy } = useSelector((state) => state.listOptions);
@@ -16,6 +18,8 @@ const Main = () => {
         direction="row"
         justifyContent="center"
         textAlign="center"
+        maxWidth={'90%'}
+        mx="auto"
         spacing={{ xs: 1, sm: 4, md: 8, xl: 20 }}
         my={{ xs: 2, sm: 4, md: 6 }}>
         <PlatformFilter platform={platform} />
@@ -29,18 +33,17 @@ const Main = () => {
         ) : error ? (
           <p>Failed to receive data.</p>
         ) : games.length ? (
-          games.map(({ id, title, release_date, publisher, genre, thumbnail }) => (
-            <li key={id}>
-              <Link to={`${id}`}>{title}</Link>
-              <p>
-                Publisher: {publisher} | Genre: {genre} | Release date: {release_date}
-              </p>
-              <img
-                src={thumbnail}
-                alt={`${title}'s cover`}
-              />
-            </li>
-          ))
+          <Container maxWidth="xl">
+            <Grid
+              container
+              spacing={2}>
+              {games.map((game) => (
+                <Grid item xs={12} md={6} lg={4} key={game.id}>
+                  <GameCard {...game} />
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
         ) : (
           <p>No matching games found.</p>
         )}
