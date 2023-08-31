@@ -14,7 +14,7 @@ export default function Footer() {
         href="https://github.com/de-oz"
         target="_blank"
         rel="noreferrer">
-        <IconButton sx={{ color: 'primary.dark' }}>
+        <IconButton color="error">
           <GitHubIcon fontSize="large" />
         </IconButton>
       </Link>

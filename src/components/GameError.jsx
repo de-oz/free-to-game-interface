@@ -2,7 +2,7 @@ const GameError = ({ error }) => {
   return (
     <>
       <h1>{error.message}</h1>
-      <p>{error.response.statusText}</p>
+      <p>Unexpected error occurred. Try again later.</p>
     </>
   );
 };

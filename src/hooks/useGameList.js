@@ -25,6 +25,7 @@ export const useGameList = (platform, tag, sortBy) => {
     const getGames = async () => {
       try {
         const { data: response } = await axios.request(options);
+
         setGames(response);
       } catch (error) {
         console.error(error.message);
