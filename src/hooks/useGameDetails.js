@@ -8,7 +8,7 @@ export const useGameDetails = (gameId) => {
   const gameEntries = useSelector((state) => state.gameEntries);
 
   const [game, setGame] = useState(gameEntries.find((game) => game.id == gameId));
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!game);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -25,6 +25,8 @@ export const useGameDetails = (gameId) => {
         setLoading(true);
         const { data: response } = await axios.request(options);
         setGame(response);
+
+        console.log(response);
 
         dispatch(saveGame(response));
         setTimeout(() => {

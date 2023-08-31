@@ -4,6 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Container from '@mui/material/Container';
 
 const theme = createTheme({
   palette: {
@@ -17,9 +18,12 @@ function App() {
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Header />
-        <main style={{ marginBottom: 48 }}>
+        <Container
+          sx={{ mt: 5, mb: 20 }}
+          component="main"
+          maxWidth="xl">
           <Outlet />
-        </main>
+        </Container>
         <Footer />
       </Box>
     </ThemeProvider>
