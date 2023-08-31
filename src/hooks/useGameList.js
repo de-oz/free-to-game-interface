@@ -24,6 +24,8 @@ export const useGameList = (platform, tag, sortBy) => {
 
     const getGames = async () => {
       try {
+        setLoading(true);
+
         const { data: response } = await axios.request(options);
 
         setGames(response);

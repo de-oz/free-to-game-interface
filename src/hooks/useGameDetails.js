@@ -22,6 +22,7 @@ export const useGameDetails = (gameId) => {
       };
 
       try {
+        setLoading(true);
         const { data: response } = await axios.request(options);
         setGame(response);
 
